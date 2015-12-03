@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+
+<head>
+<style>
+.thumbnail{
+
+  max-width: 900px;
+  margin: 0 auto;
+  font-size: 1.6rem;
+  line-height: 2rem;
+}
+
+.container {
+   display: flex;
+   width: 75%;
+   max-width: 960px;
+   margin: 0 auto;
+   font-size: 1.6rem;
+   line-height: 2rem;
+}
+
+.navigation{
+  position: fixed;
+  top: 0;
+  z-index: 20;
+  height: 39px;
+}
+
+.column {
+   flex: 1;
+   border: 1px solid #e6e6e6;
+   box-sizing: border-box;
+}
+
+.column-one {
+	    order: 1;
+      padding: 1rem;
+          width: 25%;
+      background-color: rgba(green, 0.3);
+}
+.column-two {
+	    order: 2;
+      padding: 1rem;
+          width: 56.25%;
+      background-color: rgba(red, 0.3);
+}
+.column-three {
+	    order: 3;
+      padding: 1rem;
+          width: 18.75%;
+      background-color: rgba(blue, 0.3);
+}
+</style>
+</head>
+
+<body>
+
+  <div class="navigation" onclick="mute(this)">
+    Mute
+  </div>
+
+  <div class="container">
+    <h1>Nick Sippl-Swezey</h1>
+  </div>
+
+  <div class="container">
+    <p onmouseover="hover(this)">
+    <a href="https://github.com/nsipplswezey/clojure-overtone-livecoding-wurlitzer">
+    "Overtone Wurlitzer: Livecoding A Chris Staples Song in Clojure"
+  <img class="thumbnail" src='./wurlitzer.png'>
+    <audio>
+    <source src="./wurlitzerVolume3.mp3">
+    Your browser doesn't support HTML5 audio.
+    </audio>
+    </p>
+  </div>
+
+  <div class="container">
+    <p>
+   <a href="http://fourball.herokuapp.com/">
+     "Fourball: Hybrid mobile app to coordinate same-day golf with your buddies"
+     <img class="thumbnail" src='./FourBall.png'>
+   </p>
+  </div>
+
+<div class="container">
+  <p>
+ <a href="http://nsipplswezey.github.io/Salmon">
+   "The Salmon Game: Why do salmon lay so many eggs?" A simulation based lesson.
+   <img class="thumbnail" src='http://nsipplswezey.github.io/Salmon/Images/BackgroundInfo.png'>
+ </p>
+</div>
+
+<div class="container">
+  <p>
+ <a href="http://nsipplswezey.github.io/Circle">
+   "The Circle Game: Computational modeling and simulation from table-top to laptop"
+   <img class="thumbnail" src='./CircleGame.png'>
+ </p>
+</div>
+
+<div class="container">
+  <p onmouseover="hover(this)" onmouseout="unhover(this)">
+  <a href="https://github.com/nsipplswezey/clojurescript-overtone-interface">
+  "Overtone Controller: Clojurescript App to Control Overtone"
+  <img class="thumbnail" src='./controller.png'>
+  <audio>
+    <source src="./dub.mp3">
+    Your browser doesn't support HTML5 audio.
+  </audio>
+  </p>
+</div>
+
+
+</body>
+
+<script>
+
+function mute(htmlElement){
+  var audio = document.getElementsByTagName('audio');
+  if(htmlElement.textContent === 'Unmute'){
+    htmlElement.textContent = 'Mute';
+    audio[0].volume = 1;
+    audio[1].volume = 1;
+  } else {
+    htmlElement.textContent = 'Unmute';
+    audio[0].volume = 0;
+    audio[1].volume = 0;
+  }
+
+};
+
+function hover(element){
+  element.getElementsByTagName('audio')[0].play();
+};
+
+function unhover(element){
+  element.getElementsByTagName('audio')[0].pause();
+};
+
+</script>
