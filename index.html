@@ -56,8 +56,8 @@
 
 <body>
 
-  <div class="navigation" onclick="mute(this)">
-    <img class="icon" src='./sound.png'>
+  <div class="navigation" onclick="toggleMute(this)">
+    <img class="icon" src='./noSound.png'>
   </div>
 
   <div class="container">
@@ -73,7 +73,7 @@
   </div>
 
   <div class="container">
-    <p onmouseover="hover(this)">
+    <p onmouseover="hoverPlay(this)">
     <a href="https://github.com/nsipplswezey/clojure-overtone-livecoding-wurlitzer">
     "Overtone Wurlitzer: Livecoding A Chris Staples Song in Clojure"
   <img class="thumbnail" src='./wurlitzer.png'>
@@ -109,7 +109,7 @@
 </div>
 
 <div class="container">
-  <p onmouseover="hover(this)" onmouseout="unhover(this)">
+  <p onmouseover="hoverPlay(this)" onmouseout="unhoverPause(this)">
   <a href="https://github.com/nsipplswezey/clojurescript-overtone-interface">
   "Overtone Controller: Clojurescript App to Control Overtone"
   <img class="thumbnail" src='./controller.png'>
@@ -125,29 +125,74 @@
 
 <script>
 
-function mute(htmlElement){
+function unmute(icon,audio){
+  icon.src = './sound.png';
+  audio[0].volume = 1;
+  audio[0].volume = 1;
+}
+
+function mute(icon,audio){
+  icon.src = './noSound.png';
+  audio[0].volume = 0;
+  audio[1].volume = 0;
+}
+
+function toggleMute(htmlElement){
   var audio = document.getElementsByTagName('audio');
   var icon = htmlElement.getElementsByClassName('icon')[0];
   if(icon.src.indexOf('sound.png') === -1){
     //if muted, unmute
-    icon.src = './sound.png';
-    audio[0].volume = 1;
-    audio[1].volume = 1;
+    unmute(icon,audio);
   } else {
-    //else unmuted, mute
-    icon.src = './noSound.png';
-    audio[0].volume = 0;
-    audio[1].volume = 0;
+    //if unmuted, mute
+    mute(icon, audio);
   }
 
 };
 
-function hover(element){
-  element.getElementsByTagName('audio')[0].play();
+function hoverPlay(element){
+  var icon = document.getElementsByClassName('icon')[0];
+  var audio = document.getElementsByTagName('audio');
+  var muted = icon.src.indexOf('sound.png') === -1;
+  var wurlitzer = audio[0];
+  var dub = audio[1];
+  var isWurlitzer = element.getElementsByTagName('audio')[0].currentSrc.indexOf('wurlitzer') !== -1;
+
+  //if it's wurlitzer; unmute and play
+  if(isWurlitzer){
+    unmute(icon,audio);
+    wurlitzer.play();
+  } else if(!isWurlitzer && !wurlitzer.paused && !muted){
+    //if it's not wurlitzer; wurlitzer is playing, and we're unmuted
+    //play. This will play both at the same time.
+    dub.play();
+  }else if(!isWurlitzer && muted){
+    //if we're muted, and it's dub that we hover
+    //pause wurlitzer, unmute and play dub, knowing that it'll mute and pause on unhover
+    wurlitzer.pause();
+    unmute(icon,audio)
+    dub.play();
+  }
+
 };
 
-function unhover(element){
-  element.getElementsByTagName('audio')[0].pause();
+function unhoverPause(element){
+  var icon = document.getElementsByClassName('icon')[0];
+  var audio = document.getElementsByTagName('audio');
+  var muted = icon.src.indexOf('sound.png') === -1;
+  var wurlitzer = audio[0];
+  var dub = audio[1];
+  
+  //if dub and wurlitzer are playing at the same time
+  //just pause dub
+  if(!dub.paused && !wurlitzer.paused){
+    dub.pause();
+  } else if(!dub.paused && wurlitzer.paused){
+    //if just dub is playing, pause dub and mute
+    dub.pause();
+    mute(icon,audio)
+  }
+  
 };
 
 </script>
