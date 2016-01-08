@@ -50,13 +50,14 @@
           width: 18.75%;
       background-color: rgba(blue, 0.3);
 }
+
 </style>
 </head>
 
 <body>
 
   <div class="navigation" onclick="mute(this)">
-    Mute
+    <img class="icon" src='./sound.png'>
   </div>
 
   <div class="container">
@@ -66,7 +67,7 @@
   <div class="container">
     <p>
     <a href="http://nsipplswezey.github.io/react-components/">
-    "React Components: A Staging and Demonstration Page"
+    "React Components: A Staging and Demonstration Repo"
     <img class="thumbnail" src='./valleyFire.jpg'>
     </p>
   </div>
@@ -126,12 +127,15 @@
 
 function mute(htmlElement){
   var audio = document.getElementsByTagName('audio');
-  if(htmlElement.textContent === 'Unmute'){
-    htmlElement.textContent = 'Mute';
+  var icon = htmlElement.getElementsByClassName('icon')[0];
+  if(icon.src.indexOf('sound.png') === -1){
+    //if muted, unmute
+    icon.src = './sound.png';
     audio[0].volume = 1;
     audio[1].volume = 1;
   } else {
-    htmlElement.textContent = 'Unmute';
+    //else unmuted, mute
+    icon.src = './noSound.png';
     audio[0].volume = 0;
     audio[1].volume = 0;
   }
