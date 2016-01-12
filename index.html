@@ -1,198 +1,260 @@
 <!DOCTYPE html>
 
 <head>
-<style>
-.thumbnail{
+    <style>
+        .thumbnail{
+	    display: inline-block;
+            max-width: 900px;
+            margin: 0 auto;
+            font-size: 1.6rem;
+            line-height: 2rem;
+	    white-space: nowrap;
+	    text-align: center;
+        }
 
-  max-width: 900px;
-  margin: 0 auto;
-  font-size: 1.6rem;
-  line-height: 2rem;
-}
+        .container {
+            display: block;
+            width: 75%;
+            max-width: 960px;
+            margin: 0 auto;
+            font-size: 1.6rem;
+            line-height: 2rem;
+        }
+	.container--gifs {
+	    text-align: justify;
+	}
 
-.container {
-   display: flex;
-   width: 75%;
-   max-width: 960px;
-   margin: 0 auto;
-   font-size: 1.6rem;
-   line-height: 2rem;
-}
+        .navigation{
+            position: fixed;
+            top: 0;
+            z-index: 20;
+            height: 39px;
+        }
 
-.navigation{
-  position: fixed;
-  top: 0;
-  z-index: 20;
-  height: 39px;
-}
+        .fade {
+            opacity: 1;
+            transition: opacity .25s ease-in-out;
+            -moz-transition: opacity .25s ease-in-out;
+            -webkit-transition: opacity .25s ease-in-out;
+            z-index:5;
+            position:absolute;
+            content: url(./FourBall.png);
+        }
 
-.column {
-   flex: 1;
-   border: 1px solid #e6e6e6;
-   box-sizing: border-box;
-}
+        .fade:hover{
+            opacity: 0;
+        }
 
-.column-one {
-	    order: 1;
-      padding: 1rem;
-          width: 25%;
-      background-color: rgba(green, 0.3);
-}
-.column-two {
-	    order: 2;
-      padding: 1rem;
-          width: 56.25%;
-      background-color: rgba(red, 0.3);
-}
-.column-three {
-	    order: 3;
-      padding: 1rem;
-          width: 18.75%;
-      background-color: rgba(blue, 0.3);
-}
+	a {
+	    text-decoration: none;
+	    color: inherit;
+	}
 
-</style>
+    </style>
 </head>
 
 <body>
 
-  <div class="navigation" onclick="toggleMute(this)">
-    <img class="icon" src='./noSound.png'>
-  </div>
+    <div class="navigation" onclick="toggleMute(this)">
+        <img class="icon" src='./noSound.png'>
+    </div>
 
-  <div class="container">
-    <h1>Nick Sippl-Swezey</h1>
-  </div>
-  
-  <div class="container">
-    <p>
-    <a href="http://nsipplswezey.github.io/react-components/">
-    "React Components: A Staging and Demonstration Repo"
-    <img class="thumbnail" src='./valleyFire.jpg'>
-    </p>
-  </div>
+    <div class="container">
+        <h1>Nick Sippl-Swezey</h1>
+    </div>
 
-  <div class="container">
-    <p onmouseover="hoverPlay(this)">
-    <a href="https://github.com/nsipplswezey/clojure-overtone-livecoding-wurlitzer">
-    "Overtone Wurlitzer: Livecoding A Chris Staples Song in Clojure"
-  <img class="thumbnail" src='./wurlitzer.png'>
-    <audio>
-    <source src="./wurlitzerVolume3.mp3">
-    Your browser doesn't support HTML5 audio.
-    </audio>
-    </p>
-  </div>
+    <div class="container">
+        <p>
+            <a href="http://nsipplswezey.github.io/react-components/">
+                "React Components: A Staging and Demonstration Repo"
+                <img class="thumbnail" src='./valleyFire.jpg'/>
+            </a>
+        </p>
+    </div>
 
-  <div class="container">
-    <p>
-   <a href="http://fourball.herokuapp.com/">
-     "Fourball: Hybrid mobile app to coordinate same-day golf with your buddies"
-     <img class="thumbnail" src='./FourBall.png'>
-   </p>
-  </div>
+    <div class="container">
+        <p onmouseover="hoverPlayOnce(this)" onmouseout="unhoverPause(this)">
+            <a href="https://github.com/nsipplswezey/clojure-overtone-livecoding-wurlitzer">
+                "Overtone Wurlitzer: Livecoding A Chris Staples Song in Clojure"
+                <img class="thumbnail" src='./wurlitzer.png'/>
+                <audio>
+                    <source src="./wurlitzer.mp3">
+                    Your browser doesn't support HTML5 audio.
+                </audio>
+            </a>
+        </p>
+    </div>
 
-<div class="container">
-  <p>
- <a href="http://nsipplswezey.github.io/Salmon">
-   "The Salmon Game: Why do salmon lay so many eggs?"
-   <img class="thumbnail" src='./salmongame.png'>
- </p>
-</div>
+    <div class="container">
+        <p>
+            <a href="http://fourball.herokuapp.com/">
+                "Fourball: Hybrid mobile app to coordinate same-day golf with your buddies"
 
-<div class="container">
-  <p>
- <a href="http://nsipplswezey.github.io/Circle">
-   "The Circle Game: Computational modeling and simulation from table-top to laptop"
-   <img class="thumbnail" src='./CircleGame.png'>
- </p>
-</div>
+                <img class="thumbnail" src='./one.gif'/>
+                <img class="thumbnail" src='./two.gif'/>
+                <img class="thumbnail" src='./three.gif'/>
+                <img class="thumbnail" src='./four.gif'/>
+		<img class="thumbnail" src='./five.gif'/>
+            </a>
+        </p>
+    </div>
 
-<div class="container">
-  <p onmouseover="hoverPlay(this)" onmouseout="unhoverPause(this)">
-  <a href="https://github.com/nsipplswezey/clojurescript-overtone-interface">
-  "Overtone Controller: Clojurescript App to Control Overtone"
-  <img class="thumbnail" src='./controller.png'>
-  <audio>
-    <source src="./dub.mp3">
-    Your browser doesn't support HTML5 audio.
-  </audio>
-  </p>
-</div>
+
+
+    <div class="container">
+        <p>
+            <a href="http://nsipplswezey.github.io/Salmon">
+                "The Salmon Game: Why do salmon lay so many eggs?"
+                <img class="thumbnail" src='./salmongame.png'/>
+            </a>
+        </p>
+    </div>
+
+    <div class="container">
+        <p>
+            <a href="http://nsipplswezey.github.io/Circle">
+                "The Circle Game: Computational modeling and simulation from table-top to laptop"
+                <img class="thumbnail" src='./CircleGame.png'>
+            </a>
+        </p>
+    </div>
+
+    <div class="container">
+        <p onmouseover="hoverPlay(this)" onmouseout="unhoverPause(this)">
+            <a href="https://github.com/nsipplswezey/clojurescript-overtone-interface">
+                "Overtone Controller: Clojurescript App to Control Overtone"
+                <img class="thumbnail" src='./controller.png'>
+                <audio>
+                    <source src="./dub.mp3">
+                    Your browser doesn't support HTML5 audio.
+                </audio>
+            </a>
+        </p>
+    </div>
 
 
 </body>
 
 <script>
 
-function unmute(icon,audio){
-  icon.src = './sound.png';
-  audio[0].volume = 1;
-  audio[0].volume = 1;
-}
+    function isType(data,type){
+        var dataType = Object.prototype.toString.call(data);
+        return dataType === type;
 
-function mute(icon,audio){
-  icon.src = './noSound.png';
-  audio[0].volume = 0;
-  audio[1].volume = 0;
-}
+    }
 
-function toggleMute(htmlElement){
-  var audio = document.getElementsByTagName('audio');
-  var icon = htmlElement.getElementsByClassName('icon')[0];
-  if(icon.src.indexOf('sound.png') === -1){
-    //if muted, unmute
-    unmute(icon,audio);
-  } else {
-    //if unmuted, mute
-    mute(icon, audio);
-  }
+    function unmute(icon,audio){
 
-};
+        if(icon !== null){
+            icon.src = './sound.png';
+        }
 
-function hoverPlay(element){
-  var icon = document.getElementsByClassName('icon')[0];
-  var audio = document.getElementsByTagName('audio');
-  var muted = icon.src.indexOf('sound.png') === -1;
-  var wurlitzer = audio[0];
-  var dub = audio[1];
-  var isWurlitzer = element.getElementsByTagName('audio')[0].currentSrc.indexOf('wurlitzer') !== -1;
+        if(isType(audio,'[object HTMLCollection]')){
+            audio[0].muted = false;
+            audio[1].muted = false;
+        }else{
+            audio.muted = false;
+        }
+    }
 
-  //if it's wurlitzer; unmute and play
-  if(isWurlitzer){
-    unmute(icon,audio);
-    wurlitzer.play();
-  } else if(!isWurlitzer && !wurlitzer.paused && !muted){
-    //if it's not wurlitzer; wurlitzer is playing, and we're unmuted
-    //play. This will play both at the same time.
-    dub.play();
-  }else if(!isWurlitzer && muted){
-    //if we're muted, and it's dub that we hover
-    //pause wurlitzer, unmute and play dub, knowing that it'll mute and pause on unhover
-    wurlitzer.pause();
-    unmute(icon,audio)
-    dub.play();
-  }
+    function mute(icon,audio){
 
-};
+        if(icon !== null){
+            icon.src = './noSound.png';
+        }
 
-function unhoverPause(element){
-  var icon = document.getElementsByClassName('icon')[0];
-  var audio = document.getElementsByTagName('audio');
-  var muted = icon.src.indexOf('sound.png') === -1;
-  var wurlitzer = audio[0];
-  var dub = audio[1];
-  
-  //if dub and wurlitzer are playing at the same time
-  //just pause dub
-  if(!dub.paused && !wurlitzer.paused){
-    dub.pause();
-  } else if(!dub.paused && wurlitzer.paused){
-    //if just dub is playing, pause dub and mute
-    dub.pause();
-    mute(icon,audio)
-  }
-  
-};
+        if(isType(audio,'[object HTMLCollection]')){
+            setTimeout(function(){
+                audio[0].muted = true;
+                audio[1].muted = true;},0);
+        }else{
+            audio.muted = true;
+        }
+    }
+
+    function toggleMute(htmlElement){
+        var audio = document.getElementsByTagName('audio');
+        var icon = htmlElement.getElementsByClassName('icon')[0];
+        console.log('toggle mute');
+        if(icon.src.indexOf('sound.png') === -1){
+            //if muted, unmute
+            console.log('attempt to unmute');
+            unmute(icon,audio);
+        } else {
+            //if unmuted, mute
+            console.log('attempt to mute');
+            mute(icon, audio);
+        }
+
+    };
+
+    function once(fn){
+        var result;
+        return function(){
+            if(fn){
+                result = fn.apply(this,arguments);
+                fn = null;
+            }
+        }
+        return result;
+    }
+
+    function onceToCompletion(fn){
+        var result;
+        return function(){
+            var audio = arguments[0];
+            console.log(audio.currentTime);
+            if(audio.currentTime < audio.duration){
+                result = fn.apply(this,arguments)
+            }
+            return result;
+        };
+    }
+
+    var playOnce = onceToCompletion(function(audio){audio.play()});
+    var hoverPlayOnce = once(hoverPlay);
+
+    function hoverPlay(element){
+        var icon = document.getElementsByClassName('icon')[0];
+        var audio = document.getElementsByTagName('audio');
+        var muted = icon.src.indexOf('sound.png') === -1;
+        var wurlitzer = audio[0];
+        var dub = audio[1];
+        var hoveredAudio = element.getElementsByTagName('audio')[0];
+        var isWurlitzer = hoveredAudio.currentSrc.indexOf('wurlitzer') !== -1;
+
+        if(!isWurlitzer){
+            playOnce(hoveredAudio);
+            unmute(icon,hoveredAudio);
+        }else{
+            hoveredAudio.play();
+            unmute(icon,audio);
+        }
+
+
+    };
+
+    function unhoverPause(element){
+        var icon = document.getElementsByClassName('icon')[0];
+        var audio = document.getElementsByTagName('audio');
+        var muted = icon.src.indexOf('sound.png') === -1;
+        var wurlitzer = audio[0];
+        var dub = audio[1];
+        var hoveredAudio = element.getElementsByTagName('audio')[0];
+        var isWurlitzer = hoveredAudio.currentSrc.indexOf('wurlitzer') !== -1;
+        console.log('is wurlitzer muted',wurlitzer.muted);
+        if(!isWurlitzer && !wurlitzer.paused && !wurlitzer.muted){
+            hoveredAudio.pause();
+            mute(null,hoveredAudio);
+        }else if(!isWurlitzer && wurlitzer.muted){
+            hoveredAudio.pause();
+            console.log('why arent we muting!');
+            mute(icon,hoveredAudio);
+        }else if(!isWurlitzer){
+            hoveredAudio.pause();
+            mute(icon,hoveredAudio);
+        }
+
+    };
 
 </script>
