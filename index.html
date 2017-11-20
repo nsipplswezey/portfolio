@@ -101,7 +101,7 @@
         <p>
             <a href="https://github.com/unitedvote/liquid-earth">
                 "Liquid-Earth: Collecting Google Earth URLs for San Francisco Legislation Addresses"
-                <img class="thumbnail" src='https://github.com/unitedvote/liquid-earth/blob/master/Done.gif?raw=true'/>
+                <img class="thumbnail" src='./assets/liquid-earth.gif'/>
             </a>
         </p>
     </div>
@@ -119,7 +119,7 @@
         <p>
             <a href="http://nsipplswezey.github.io/nodal/docs/tutorial.html">
                 "Nodal: node.js Web Servers Optimized for Building API Services Quickly and Efficiently"
-                <img class="thumbnail" src='./nodal.png'/>
+                <img class="thumbnail" src='./assets/nodal.png'/>
             </a>
         </p>
     </div>
@@ -128,7 +128,7 @@
         <p>
             <a href="http://nsipplswezey.github.io/react-components/">
                 "React Components: A Staging and Demonstration Repo"
-                <img class="thumbnail" src='./valleyFire.gif'/>
+                <img class="thumbnail" src='./assets/valleyFire.gif'/>
             </a>
         </p>
     </div>
@@ -138,9 +138,9 @@
 
             <a href="https://github.com/nsipplswezey/clojure-overtone-livecoding-wurlitzer">
                 "Overtone Wurlitzer: Livecoding A Chris Staples Song in Clojure"
-                <img class="thumbnail" src='./wurlitzer.png'/>
+                <img class="thumbnail" src='./assets/wurlitzer.png'/>
                 <audio>
-                    <source src="./wurlitzer.mp3">
+                    <source src="./assets/audio/wurlitzer.mp3">
                     Your browser doesn't support HTML5 audio.
                 </audio>
             </a>
@@ -153,11 +153,11 @@
                 "Fourball: Hybrid mobile app to coordinate same-day golf with your buddies"
 	    </a>
             <a href="http://fourball.herokuapp.com/" class="nowrap nodec">
-                <img class="thumbnail" src='./one.gif'/>
-                <img class="thumbnail" src='./two.gif'/>
-                <img class="thumbnail" src='./three.gif'/>
-                <img class="thumbnail" src='./four.gif'/>
-		<img class="thumbnail" src='./five.gif'/>
+                <img class="thumbnail" src='./assets/one.gif'/>
+                <img class="thumbnail" src='./assets/two.gif'/>
+                <img class="thumbnail" src='./assets/three.gif'/>
+                <img class="thumbnail" src='./assets/four.gif'/>
+		<img class="thumbnail" src='./assets/five.gif'/>
             </a>
         </p>
     </div>
@@ -166,7 +166,7 @@
         <p>
             <a href="http://nsipplswezey.github.io/Salmon">
                 "The Salmon Game: Why do salmon lay so many eggs?"
-                <img class="thumbnail" src='./salmongame.png'/>
+                <img class="thumbnail" src='./assets/salmongame.png'/>
             </a>
         </p>
     </div>
@@ -175,7 +175,7 @@
         <p>
             <a href="http://nsipplswezey.github.io/Circle">
                 "The Circle Game: Computational modeling and simulation from table-top to laptop"
-                <img class="thumbnail" src='./CircleGame.png'>
+                <img class="thumbnail" src='./assets/CircleGame.png'>
             </a>
         </p>
     </div>
@@ -184,9 +184,9 @@
         <p onmouseover="hoverPlay(this)" onmouseout="unhoverPause(this)">
             <a href="https://github.com/nsipplswezey/clojurescript-overtone-interface">
                 "Overtone Controller: Clojurescript App to Control Overtone"
-                <img class="thumbnail" src='./controller.png'>
+                <img class="thumbnail" src='./assets/controller.png'>
                 <audio>
-                    <source src="./dub.mp3">
+                    <source src="./assets/dub.mp3">
                     Your browser doesn't support HTML5 audio.
                 </audio>
             </a>
@@ -207,7 +207,7 @@
     function unmute(icon,audio){
 
         if(icon !== null){
-            icon.src = './sound.png';
+            icon.src = './assets/sound.png';
         }
 
         if(isType(audio,'[object HTMLCollection]')){
@@ -221,7 +221,7 @@
     function mute(icon,audio){
 
         if(icon !== null){
-            icon.src = './noSound.png';
+            icon.src = './assets/noSound.png';
         }
 
         if(isType(audio,'[object HTMLCollection]')){
@@ -237,7 +237,7 @@
         var audio = document.getElementsByTagName('audio');
         var icon = htmlElement.getElementsByClassName('icon')[0];
         console.log('toggle mute');
-        if(icon.src.indexOf('sound.png') === -1){
+        if(icon.src.indexOf('/assets/sound.png') === -1){
             //if muted, unmute
             console.log('attempt to unmute');
             unmute(icon,audio);
